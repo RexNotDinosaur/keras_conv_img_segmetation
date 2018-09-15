@@ -20,11 +20,14 @@ def read_img(file_name) -> List[List[List[float]]]:
 
 
 def predict(model, img: List[List[List[float]]], row_from, row_to, col_from, col_to) -> List[List[List[int]]]:
-    input_data = np.array([img])
+    cropped_img = [[img[r][c] for c in range(col_from, col_to)] for r in range(row_from, row_to)]
+    input_data = np.array([cropped_img])
     # model.predict()
     # not done yet
-
+    prediction = model.predict(input_data)[0]
+    return prediction
 
 if __name__ == '__main__':
-    img_lst = read_img('/Users/Rex/Desktop/boring stuff/PAST/temppic/25.png')
-    print(img_lst)
+    # img_lst = read_img('WHATEVER U WANT TO PUT HERE')
+    # print(img_lst)
+    pass
