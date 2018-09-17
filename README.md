@@ -9,11 +9,25 @@ The loss function is not square of difference or any other commonly used loss. I
    3. f(x) is concave
    4. f(1) / f(-1) is equal to some positive constant so that we can adjust an asymetry between two kinds of mistakes
 I then arrive at the formula:
-   #formula inserted later
+   ![](/readMe_Images/func_formula.png?raw=true "Title")
    
-For instance, when f(1)/f(-1) = 100 (which is what I use for the training), n=6.289, and the graph look like this:
-  #graph insert later
+For instance, when f(1)/f(-1) = 10 (I used 100 for the training), n=3.32, and the graph look like this:
+  ![function f(x)](/readMe_Images/curve.png?raw=true "Title")
   
   
-Here are several examples of the predictions made by the network
-  #images later
+Here are several examples of the predictions made by the network, for predictions, the white lines are predicted boundary
+  ![original image](/readMe_Images/test0.png?raw=true "Title")
+  ![prediction visualized](/readMe_Images/pred_vis0.png?raw=true "Title")
+  
+  ![original image](/readMe_Images/test1.png?raw=true "Title")
+  ![prediction visualized](/readMe_Images/pred_vis1.png?raw=true "Title")
+  
+  ![original image](/readMe_Images/test2.png?raw=true "Title")
+  ![prediction visualized](/readMe_Images/pred_vis2.png?raw=true "Title")
+  
+  ![original image](/readMe_Images/test3.png?raw=true "Title")
+  ![prediction visualized](/readMe_Images/pred_vis3.png?raw=true "Title")
+  
+  ![original image](/readMe_Images/test4.png?raw=true "Title")
+  ![prediction visualized](/readMe_Images/pred_vis4.png?raw=true "Title")
+  
