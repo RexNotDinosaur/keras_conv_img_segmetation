@@ -1,0 +1,7 @@
+test[0-9]*.png
+prediction.txt
+lb[0-9]*.txt
+prd[0-9]*.txt
+__pycache__
+pred_vis*.png
+*.h5

@@ -4,8 +4,10 @@ from loss_func import asymmetric_loss_generator
 from keras.initializers import RandomNormal
 from keras.optimizers import adam
 from keras.regularizers import l2
+from keras.models import save_model
 import numpy as np
 from typing import List, Union
+from segment_img import read_img, predict_whole_img, visualize_prediction
 
 
 ROWS = 40
@@ -23,7 +25,7 @@ CONV_ACTIVATION = 'tanh'
 CONNECT_ACTIVATION = 'tanh'
 
 BATCH_SIZE = 20
-EPOCHS = 30
+EPOCHS = 70
 
 NEG_RATIO_POS = 100
 LEARN_RATE = 0.001
@@ -87,12 +89,25 @@ if __name__ == '__main__':
             f.write('\n'.join(l_str))
 
     def main_callback(model):
-        for i in range(0, 5):
-            x, y = generate_random_example(ROWS, COLS, CHANNELS)
+        # model.save('trained.h5')
+        save_model(model, 'trained.h5')
+        # row_f = 250
+        # col_f = 150
+        test_img_rows = 353
+        test_img_cols = 546
+        file_path = 'test0.png'
 
-            pred = model.predict(np.array([x]))[0]
-            label_write_to_file('lb' + str(i) + '.txt', y)
-            label_write_to_file('prd' + str(i) + '.txt', pred, True)
+        image_to_test, img_file = read_img(file_name=file_path)
+        test_prediction = predict_whole_img(model, image_to_test,
+                                            test_img_rows, test_img_cols, ROWS, COLS)
+        label_write_to_file('prediction.txt', test_prediction, True)
+        visualize_prediction(test_prediction, img_file, test_img_rows, test_img_cols, CHANNELS, 'pred_vis.png')
+        # for i in range(0, 5):
+        #     x, y = generate_random_example(ROWS, COLS, CHANNELS)
+        #
+        #     pred = model.predict(np.array([x]))[0]
+        #     label_write_to_file('lb' + str(i) + '.txt', y)
+        #     label_write_to_file('prd' + str(i) + '.txt', pred, True)
         # print(m.get_weights())
         # print(encoder.get_weights())
         # print(decoder.get_weights())

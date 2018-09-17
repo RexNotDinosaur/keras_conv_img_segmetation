@@ -78,7 +78,6 @@ def create_model(rows: int, cols: int, channels: int, layers: int,
     assert decoded_r == rows
     assert decoded_c == cols
     model = Model(inputs=[input_img], outputs=decoded)
-
     return model
 
 
